@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Feedback Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Student Feedback Dashboard</h1>
+    <p>Academic Evaluation & Performance System</p>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Section 1: Feedback Form -->
+    <section class="card">
+      <h2>Course Feedback Form</h2>
+      <form id="feedbackForm" novalidate>
+        
+        <div class="form-group">
+          <label for="studentName">Student Name:</label>
+          <input type="text" id="studentName" placeholder="Enter your name">
+          <span class="error" id="nameError"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="courseName">Course Name:</label>
+          <input type="text" id="courseName" placeholder="Enter course title">
+          <span class="error" id="courseError"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="facultyName">Faculty Name:</label>
+          <input type="text" id="facultyName" placeholder="Enter faculty name">
+          <span class="error" id="facultyError"></span>
+        </div>
+
+        <!-- Grouped Ratings -->
+        <fieldset>
+          <legend>Performance Ratings (1 to 5)</legend>
+          
+          <div class="form-group">
+            <label for="teachingRating">Teaching Rating:</label>
+            <select id="teachingRating">
+              <option value="" selected disabled>Select rating...</option>
+              <option value="1">1 - Poor</option>
+              <option value="2">2 - Needs Improvement</option>
+              <option value="3">3 - Good</option>
+              <option value="4">4 - Very Good</option>
+              <option value="5">5 - Excellent</option>
+            </select>
+            <span class="error" id="teachingError"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="practicalRating">Practical / Lab Rating:</label>
+            <select id="practicalRating">
+              <option value="" selected disabled>Select rating...</option>
+              <option value="1">1 - Poor</option>
+              <option value="2">2 - Needs Improvement</option>
+              <option value="3">3 - Good</option>
+              <option value="4">4 - Very Good</option>
+              <option value="5">5 - Excellent</option>
+            </select>
+            <span class="error" id="practicalError"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="contentRating">Content Rating:</label>
+            <select id="contentRating">
+              <option value="" selected disabled>Select rating...</option>
+              <option value="1">1 - Poor</option>
+              <option value="2">2 - Needs Improvement</option>
+              <option value="3">3 - Good</option>
+              <option value="4">4 - Very Good</option>
+              <option value="5">5 - Excellent</option>
+            </select>
+            <span class="error" id="contentError"></span>
+          </div>
+        </fieldset>
+
+        <div class="form-group">
+          <label for="comments">General Comments:</label>
+          <textarea id="comments" rows="3" placeholder="Optional comments..."></textarea>
+        </div>
+
+        <div class="btn-group">
+          <button type="button" id="submitBtn" class="btn primary">Submit Feedback</button>
+          <button type="button" id="resetBtn" class="btn secondary">Reset</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Section 2: Results Container -->
+    <section class="card summary-card" id="feedbackSummary">
+      <span class="badge" id="statusBadge">Awaiting Submission</span>
+      <h2>Evaluation Summary</h2>
+      
+      <div id="placeholderText">
+        <p>Submit the form to view computed performance metrics and analysis results here.</p>
+      </div>
+
+      <div id="resultsContent" style="display: none;">
+        <p><strong>Student:</strong> <span id="resName"></span></p>
+        <p><strong>Course:</strong> <span id="resCourse"></span> | <strong>Faculty:</strong> <span id="resFaculty"></span></p>
+        <hr>
+        <p><strong>Average Score:</strong> <span id="resAverage"></span> / 5.00 (<span id="resPercentage"></span>%)</p>
+        <p><strong>Classification:</strong> <span id="resClassification" class="tag"></span></p>
+        <p><strong>Area Needing Greatest Improvement:</strong> <span id="resLowest"></span></p>
+        
+        <p id="highPerfAlert" style="display: none; color: #27ae60; font-weight: bold; margin-top: 10px;">
+          ✨ Outstanding Performance! All ratings are at least 4.5.
+        </p>
+
+        <div id="suggestionDisplay" style="display: none; margin-top: 10px; background: #eef2f7; padding: 8px; border-radius: 4px;">
+          <strong>Suggestion:</strong> <span id="resSuggestion"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Recommendation Container -->
+    <section class="card recommendation-card" id="recommendation" style="display: none;">
+      <h2>Actionable Recommendation</h2>
+      <p id="resRecommendation" class="recommendation-text"></p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Student Feedback System</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
